@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://<mDarpanVats>.github.io/<portfolo-3d>",
+  "homepage": "https://mDarpanVats.github.io/portfolo-3d",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
