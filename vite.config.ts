@@ -1,22 +1,39 @@
 // import { defineConfig } from 'vite'
 // import react from '@vitejs/plugin-react'
 
+import { defineConfig } from "vite";
+import path from "path";
+import react from "@vitejs/plugin-react";
+import { resolve } from "path";
+import svgr from "vite-plugin-svgr";
 // // https://vite.dev/config/
 // export default defineConfig({
 //   plugins: [react()],
 // })
-
-import { defineConfig } from "vite";
-import path from "path";
-import react from "@vitejs/plugin-react";
-import svgr from "vite-plugin-svgr";
+import viteCompression from "vite-plugin-compression";
 
 export default defineConfig({
+  server: {
+    port: 3000,
+  },
   base: "/portfolio-3d/",
+  root: "./",
   build: {
     outDir: "build",
+    rollupOptions: {
+      input: {
+        index: resolve(__dirname, "index.html"),
+      },
+    },
   },
-  plugins: [react(), svgr()],
+  plugins: [
+    react(),
+    svgr(),
+    viteCompression({
+      algorithm: "gzip",
+      ext: ".gz",
+    }),
+  ],
   assetsInclude: ["**/*.glb", "**/*.gltf"],
   resolve: {
     alias: {
